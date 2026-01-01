@@ -1,20 +1,32 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+interface TrackAttachment {
+  url: string
+}
+
+interface TrackListItemAttributes {
+  title: string
+  attachments: TrackAttachment[]
+}
+
+interface TrackListItemResource {
+  id: string
+  attributes: TrackListItemAttributes
+}
 
 export const App = () => {
-  const tracks = [
-    {
-      id: 1,
-      title: 'MusicFun Soundtrack',
-      url: 'https://musicfun.it-incubator.app/api/samurai-way-soundtrack.mp3',
-    },
-    {
-      id: 2,
-      title: 'MusicFun Soundtrack - Instrumental',
-      url: 'https://musicfun.it-incubator.app/api/samurai-way-soundtrack-instrumental.mp3',
-    },
-  ]
+  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
+  const [tracks, setTracks] = useState<TrackListItemResource[] | null>(null)
 
-  const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null)
+  useEffect(() => {
+    fetch('https://musicfun.it-incubator.app/api/1.0/playlists/tracks', {
+      headers: {
+        'api-key': import.meta.env.VITE_API_KEY,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => setTracks(json.data))
+  }, [])
 
   if (tracks === null) {
     return (
@@ -49,9 +61,9 @@ export const App = () => {
             }}
           >
             <div onClick={() => setSelectedTrackId(track.id)}>
-              {track.title}
+              {track.attributes.title}
             </div>
-            <audio src={track.url} controls></audio>
+            <audio src={track.attributes.attachments[0].url} controls></audio>
           </li>
         ))}
       </ul>
