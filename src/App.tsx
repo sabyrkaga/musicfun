@@ -12,12 +12,39 @@ export const App = () => {
     },
   ]
 
+  const selectedTrackId = 1
+
+  if (tracks === null) {
+    return (
+      <>
+        <h1>MusicFun Player</h1>
+        <div>Loading...</div>
+      </>
+    )
+  }
+
+  if (tracks.length === 0) {
+    return (
+      <>
+        <h1>MusicFun Player</h1>
+        <div>No tracks available</div>
+      </>
+    )
+  }
+
   return (
     <>
       <h1>MusicFun Player</h1>
       <ul>
         {tracks.map((track) => (
-          <li key={track.id}>
+          <li
+            key={track.id}
+            style={{
+              border: `1px solid ${
+                track.id === selectedTrackId ? 'orange' : 'transparent'
+              }`,
+            }}
+          >
             <div>{track.title}</div>
             <audio src={track.url} controls></audio>
           </li>
