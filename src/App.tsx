@@ -15,6 +15,7 @@ interface TrackListItemAttributes {
 }
 
 interface TrackDetailsResource {
+  id: string
   attributes: TrackDetailsAttributes
 }
 
@@ -40,6 +41,8 @@ export const App = () => {
   }, [])
 
   useEffect(() => {
+    if (!selectedTrackId) return
+
     fetch(
       `https://musicfun.it-incubator.app/api/1.0/playlists/tracks/${selectedTrackId}`,
       {
@@ -105,9 +108,12 @@ export const App = () => {
         </ul>
         <div>
           <h2>Track details</h2>
-          {!selectedTrackId ? (
-            'No track selected'
-          ) : (
+          {!selectedTrack && !selectedTrackId && <p>Track is not selected</p>}
+          {!selectedTrack && selectedTrackId && <p>Loading...</p>}
+          {selectedTrack &&
+            selectedTrackId &&
+            selectedTrack.id !== selectedTrackId && <p>Loading...</p>}
+          {selectedTrack && (
             <div>
               <h3>{selectedTrack?.attributes.title}</h3>
               <div>
