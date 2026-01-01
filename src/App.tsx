@@ -88,7 +88,7 @@ export const App = () => {
               key={track.id}
               style={{
                 border: `1px solid ${
-                  track.id === selectedTrackId ? 'orange' : 'transparent'
+                  track.id === selectedTrackId ? '#646cff' : 'transparent'
                 }`,
               }}
             >

@@ -13,6 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  padding: 10px;
+  border-radius: 10px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -23,9 +33,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
