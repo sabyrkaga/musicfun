@@ -1,5 +1,5 @@
-import { Playlist } from "./Playlist"
-import { TrackDetails } from "./TrackDetails"
+import { Playlist } from '../Playlist'
+import { TrackDetails } from '../TrackDetails'
 
 export const MainContent = () => {
   return (
