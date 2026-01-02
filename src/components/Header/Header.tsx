@@ -1,11 +1,15 @@
 import { PageTitle } from '../PageTitle'
 import { ResetButton } from '../ResetButton'
 
-export const Header = () => {
+interface Props {
+  onReset: () => void
+}
+
+export const Header = ({ onReset }: Props) => {
   return (
     <header>
       <PageTitle />
-      <ResetButton />
+      <ResetButton onReset={onReset} />
     </header>
   )
 }
