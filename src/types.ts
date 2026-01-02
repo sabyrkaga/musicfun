@@ -21,3 +21,11 @@ export interface TrackListItemResource {
   id: string
   attributes: TrackListItemAttributes
 }
+
+export interface TrackDetailsResponse {
+  data: TrackDetailsResource
+}
+
+export interface TrackListResponse {
+  data: TrackListItemResource[]
+}
