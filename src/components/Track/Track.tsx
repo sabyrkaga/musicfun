@@ -13,7 +13,6 @@ export const Track = ({
 }: Props) => {
   return (
     <li
-      key={track.id}
       style={{
         border: `1px solid ${
           track.id === selectedTrackId ? '#646cff' : 'transparent'
