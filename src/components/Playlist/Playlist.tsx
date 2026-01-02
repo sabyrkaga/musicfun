@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { TrackListItemResource } from '../../types'
+import { Track } from '../Track'
 
 interface Props {
   selectedTrackId: string | null
@@ -25,23 +26,12 @@ export const Playlist = ({ selectedTrackId, setSelectedTrackId }: Props) => {
       {tracks?.length === 0 && <p>No tracks available</p>}
       <ul>
         {tracks?.map((track) => (
-          <li
+          <Track
             key={track.id}
-            style={{
-              border: `1px solid ${
-                track.id === selectedTrackId ? '#646cff' : 'transparent'
-              }`,
-            }}
-          >
-            <div
-              onClick={() => {
-                setSelectedTrackId(track.id)
-              }}
-            >
-              {track.attributes.title}
-            </div>
-            <audio src={track.attributes.attachments[0].url} controls></audio>
-          </li>
+            track={track}
+            selectedTrackId={selectedTrackId}
+            setSelectedTrackId={setSelectedTrackId}
+          />
         ))}
       </ul>
     </>
