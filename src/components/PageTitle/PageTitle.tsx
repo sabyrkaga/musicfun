@@ -1,3 +1,3 @@
 export const PageTitle = () => {
-  return <h1>Page Title</h1>
+  return <h1>MusicFun Player</h1>
 }
