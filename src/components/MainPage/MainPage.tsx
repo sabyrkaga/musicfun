@@ -16,7 +16,12 @@ export const MainPage = () => {
   return (
     <>
       <Header onReset={handleReset} />
-      <MainContent />
+      <MainContent
+        selectedTrackId={selectedTrackId}
+        setSelectedTrackId={setSelectedTrackId}
+        selectedTrack={selectedTrack}
+        setSelectedTrack={setSelectedTrack}
+      />
     </>
   )
 }
