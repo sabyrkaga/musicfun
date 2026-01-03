@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import type { TrackDetailsResource } from '../../types'
 import { Header } from '../Header'
 import { MainContent } from '../MainContent'
+import { useSelectedTrack } from '../../bll/useSelectedTrack'
 
 export const MainPage = () => {
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null)
-  const [selectedTrack, setSelectedTrack] =
-    useState<TrackDetailsResource | null>(null)
-
-  const handleReset = () => {
-    setSelectedTrackId(null)
-    setSelectedTrack(null)
-  }
+  const {
+    selectedTrackId,
+    setSelectedTrackId,
+    selectedTrack,
+    setSelectedTrack,
+    handleReset,
+  } = useSelectedTrack()
 
   return (
     <>

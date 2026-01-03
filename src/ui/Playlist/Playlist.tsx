@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
-import type { TrackListItemResource } from '../../types'
 import { Track } from '../Track'
-import { getPlaylist } from '../../dal/api'
+import { usePlaylist } from '../../bll/usePlaylist'
 
 interface Props {
   selectedTrackId: string | null
@@ -9,11 +7,7 @@ interface Props {
 }
 
 export const Playlist = ({ selectedTrackId, setSelectedTrackId }: Props) => {
-  const [tracks, setTracks] = useState<TrackListItemResource[] | null>(null)
-
-  useEffect(() => {
-    getPlaylist().then((json) => setTracks(json.data))
-  }, [])
+  const tracks = usePlaylist()
 
   return (
     <>

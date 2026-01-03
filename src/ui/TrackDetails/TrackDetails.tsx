@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
 import type { TrackDetailsResource } from '../../types'
-import { getTrack } from '../../dal/api'
+import { useTrackDetails } from '../../bll/useTrackDetails'
 
 interface Props {
   selectedTrackId: string | null
@@ -13,18 +12,10 @@ export const TrackDetails = ({
   selectedTrack,
   setSelectedTrack,
 }: Props) => {
-  const [isTrackLoading, setIsTrackLoading] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (!selectedTrackId) return
-
-    setIsTrackLoading(true)
-    setSelectedTrack(null)
-
-    getTrack(selectedTrackId)
-      .then((json) => setSelectedTrack(json.data))
-      .finally(() => setIsTrackLoading(false))
-  }, [selectedTrackId])
+  const { isTrackLoading } = useTrackDetails({
+    selectedTrackId,
+    setSelectedTrack,
+  })
 
   return (
     <div>
