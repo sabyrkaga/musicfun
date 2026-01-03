@@ -1,6 +1,12 @@
 .track {
+  padding: 10px;
+  border-radius: 10px;
   border: 1px solid #fff;
   transition-duration: 0.3s;
+}
+
+.track:not(:last-child) {
+  margin-bottom: 12px;
 }
 
 .track.selected {

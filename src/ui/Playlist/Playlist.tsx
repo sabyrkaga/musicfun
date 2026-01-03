@@ -1,5 +1,6 @@
 import { Track } from '../Track'
 import { usePlaylist } from '../../bll/usePlaylist'
+import styles from './Playlist.module.css'
 
 interface Props {
   selectedTrackId: string | null
@@ -13,7 +14,7 @@ export const Playlist = ({ selectedTrackId, setSelectedTrackId }: Props) => {
     <>
       {tracks === null && <p>Loading...</p>}
       {tracks?.length === 0 && <p>No tracks available</p>}
-      <ul>
+      <ul className={styles.playlist}>
         {tracks?.map((track) => (
           <Track
             key={track.id}

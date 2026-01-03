@@ -1,5 +1,6 @@
 import { PageTitle } from '../PageTitle'
 import { ResetButton } from '../ResetButton'
+import styles from './Header.module.css'
 
 interface Props {
   onReset: () => void
@@ -7,7 +8,7 @@ interface Props {
 
 export const Header = ({ onReset }: Props) => {
   return (
-    <header>
+    <header className={styles.header}>
       <PageTitle />
       <ResetButton onReset={onReset} />
     </header>
