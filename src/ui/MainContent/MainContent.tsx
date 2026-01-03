@@ -1,6 +1,7 @@
 import type { TrackDetailsResource } from '../../types'
 import { Playlist } from '../Playlist'
 import { TrackDetails } from '../TrackDetails'
+import styles from './MainContent.module.css'
 
 interface Props {
   selectedTrack: TrackDetailsResource | null
@@ -16,7 +17,7 @@ export const MainContent = ({
   setSelectedTrackId,
 }: Props) => {
   return (
-    <main style={{ display: 'flex', columnGap: '30px' }}>
+    <main className={styles.wrapper}>
       <Playlist
         selectedTrackId={selectedTrackId}
         setSelectedTrackId={setSelectedTrackId}

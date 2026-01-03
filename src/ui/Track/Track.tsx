@@ -1,4 +1,5 @@
 import type { TrackListItemResource } from '../../types'
+import styles from './Track.module.css'
 
 interface Props {
   track: TrackListItemResource
@@ -13,19 +14,14 @@ export const Track = ({
 }: Props) => {
   return (
     <li
-      style={{
-        border: `1px solid ${
-          track.id === selectedTrackId ? '#646cff' : 'transparent'
-        }`,
+      className={`${styles.track} ${
+        selectedTrackId === track.id ? styles.selected : ''
+      }`}
+      onClick={() => {
+        setSelectedTrackId(track.id)
       }}
     >
-      <div
-        onClick={() => {
-          setSelectedTrackId(track.id)
-        }}
-      >
-        {track.attributes.title}
-      </div>
+      <div className={styles.title}>{track.attributes.title}</div>
       <audio src={track.attributes.attachments[0].url} controls></audio>
     </li>
   )

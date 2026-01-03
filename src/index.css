@@ -23,6 +23,10 @@ li {
   border-radius: 10px;
 }
 
+li:not(:last-child) {
+  margin-bottom: 12px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

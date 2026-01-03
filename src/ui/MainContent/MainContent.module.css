@@ -1,0 +1,4 @@
+.wrapper {
+  display: flex;
+  column-gap: 30px;
+}
