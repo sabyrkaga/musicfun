@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import type { TrackListItemResource } from '../../types'
 import styles from './Track.module.css'
 
@@ -12,11 +13,13 @@ export const Track = ({
   selectedTrackId,
   setSelectedTrackId,
 }: Props) => {
+  const isSelected = track.id === selectedTrackId
+
   return (
     <li
-      className={`${styles.track} ${
-        selectedTrackId === track.id ? styles.selected : ''
-      }`}
+      className={clsx(styles.track, {
+        [styles.selected]: isSelected,
+      })}
       onClick={() => {
         setSelectedTrackId(track.id)
       }}
